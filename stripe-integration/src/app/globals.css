@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* Regular */
+@import "tailwindcss";
+
+
+@theme {
+  --font-principal: "Poppins", "sans-serif";
+
+  --color-cinza-principal-50: #f3f4f6;
+  --color-cinza-principal-100: #edeef1;
+  --color-cinza-principal-200: #d7dbe0;
+  --color-cinza-principal-300: #b3bbc6;
+  --color-cinza-principal-400: #545454;
+
+  --color-roxo-principal-50: #f0f3fd;
+  --color-roxo-principal-100: #e3e8fc;
+  --color-roxo-principal-200: #ccd4f9;
+  --color-roxo-principal-300: #adb7f4;
+  --color-roxo-principal-400: #8c93ed;
+  --color-roxo-principal-500: #7170e4;
+  --color-roxo-principal-600: #574cd5;
+  --color-roxo-principal-700: #5145bd;
+  --color-roxo-principal-800: #423a99;
+  --color-roxo-principal-900: #3a357a;
+  --color-roxo-principal-950: #231f47;
+
+  --color-laranja-principal-50: #fffcea;
+  --color-laranja-principal-100: #fff5c5;
+  --color-laranja-principal-200: #ffeb85;
+  --color-laranja-principal-300: #ffda46;
+  --color-laranja-principal-400: #ffc71b;
+  --color-laranja-principal-500: #ffa500;
+  --color-laranja-principal-600: #e27c00;
+  --color-laranja-principal-700: #bb5502;
+  --color-laranja-principal-800: #984208;
+  --color-laranja-principal-900: #7c360b;
+  --color-laranja-principal-950: #481a00;
+
+  --color-azul-principal-50: #ebf7ff;
+  --color-azul-principal-100: #d2eeff;
+  --color-azul-principal-200: #afe3ff;
+  --color-azul-principal-300: #78d3ff;
+  --color-azul-principal-400: #38b9ff;
+  --color-azul-principal-500: #0b93ff;
+  --color-azul-principal-600: #006fff;
+  --color-azul-principal-700: #0056ff;
+  --color-azul-principal-800: #0045d4;
+  --color-azul-principal-900: #0241a6;
+  --color-azul-principal-950: #051b44;
+  --color-borda-input: #CDD1DB;
+
+  --color-transparente: rgba(0, 0, 0, 0.5);
+}
+
+
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Poppins", sans-serif;
+}
