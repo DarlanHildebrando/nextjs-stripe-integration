@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import CreateButton from "./CreateButton"
 import PaidOrFree from "./PaidOrFree"
 import HalfPrice from "./HalfPrice"
@@ -8,6 +8,10 @@ import HalfPrice from "./HalfPrice"
 export default function CreateTickets({ close }) {
 
 
+    const [startDate, setStartDate] = useState(false)
+    const [startTime, setStartTime] = useState(false)
+    const [endDate, setEndDate] = useState('')
+    const [endTime, setEndTime] = useState('')
     const [Ticket, setTicket] = useState({
 
         paidOrFree: '',
@@ -20,8 +24,19 @@ export default function CreateTickets({ close }) {
         halfNetAmountToOrganizer: 0,
         halfAmountToClient: 0,
         startDate: new Date(),
-        endDate: new Date()
+        endDate: ''
     })
+
+    const DateAndTime = (date, time) => {
+
+        if(!date || !time) return;
+
+        const newDate = new Date(`${date}T${time}`)
+        setTicket(prev => ({...prev, startDate: newDate}))
+
+        console.log(Ticket.startDate.toISOString())
+
+    }
 
     return (
 
@@ -94,11 +109,11 @@ export default function CreateTickets({ close }) {
                         <div className="flex gap-3">
                             <div className="flex flex-col w-2/3">
                                 <label htmlFor="">Data de início</label>
-                                <input className="border border-gray-400 rounded-sm p-3 w-full text-sm" type="date"/>
+                                <input className="border border-gray-400 rounded-sm p-3 w-full text-sm" type="date" onChange={(e) => {const value = e.target.value; setStartDate(value); DateAndTime(value, startTime)}}/>
                             </div>
                             <div className="flex flex-col w-1/3">
                                 <label htmlFor="">Horário</label>
-                                <input className="border border-gray-400 rounded-sm p-3 w-full text-sm" type="time"/>
+                                <input className="border border-gray-400 rounded-sm p-3 w-full text-sm" type="time" onChange={(e) => {const value = e.target.value; setStartTime(value); DateAndTime(startDate, value)}}/>
                             </div>
                         </div>
                         <div className="flex gap-3">
