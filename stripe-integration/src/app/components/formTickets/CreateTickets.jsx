@@ -24,19 +24,33 @@ export default function CreateTickets({ close }) {
         halfNetAmountToOrganizer: 0,
         halfAmountToClient: 0,
         startDate: new Date(),
-        endDate: ''
+        endDate: new Date(),
+        description: ''
     })
 
-    const DateAndTime = (date, time) => {
+    const DateAndTimeS = (date, time) => {
+
+        if(!date || !time) return;
+
+        const newDate = new Date(`${date}T${time}`)
+        setTicket(prev => ({...prev, endDate: newDate}))
+
+        console.log(Ticket.endDatetDate.toISOString())
+
+    }
+
+    const DateAndTimeE = (date, time) => {
 
         if(!date || !time) return;
 
         const newDate = new Date(`${date}T${time}`)
         setTicket(prev => ({...prev, startDate: newDate}))
 
-        console.log(Ticket.startDate.toISOString())
+        console.log(Ticket.endDate.toISOString())
 
     }
+
+
 
     return (
 
@@ -87,12 +101,23 @@ export default function CreateTickets({ close }) {
                         </div>
                     </div>
 
-                    <HalfPrice free={Ticket.paidOrFree === 'gratuito'} paid={Ticket.paidOrFree === 'pago'} />
+                    <HalfPrice 
+                    free={Ticket.paidOrFree === 'gratuito'} 
+                    paid={Ticket.paidOrFree === 'pago'} 
+
+                    changeHalfTitle={(value) => setTicket(prev =>({...prev, halfTitle: value}))}
+
+                    changeHalfNetAmountToOrganizer={(value) => setTicket({halfNetAmountToOrganizer: value})}
+
+                    changeHalfAmountToClient={(value) => setTicket({halfAmountToClient: value})}
+
+                    changeQuantityHalfTicket={(value) => setTicket({quantityHalfTicket: value})}
+                    />
 
                     <div className="flex justify-start w-full mt-5">
                         <div className="flex flex-col">
                             <legend className="text-roxo-principal-600 font-semibold">Período de vendas</legend>
-                            <div className="flex flex-col sm:flex-row sm:space-x-5 mt-4 space-y-2 sm:space-y-0">
+                            <div className="flex flex-col sm:flex-row sm:space-x-5 mt-4 space-y -2 sm:space-y-0">
                                 <div className="flex items-center space-x-1">
                                     <input className="" type="radio" name="meia-entrada" />
                                     <label>Por data</label>
@@ -109,21 +134,21 @@ export default function CreateTickets({ close }) {
                         <div className="flex gap-3">
                             <div className="flex flex-col w-2/3">
                                 <label htmlFor="">Data de início</label>
-                                <input className="border border-gray-400 rounded-sm p-3 w-full text-sm" type="date" onChange={(e) => {const value = e.target.value; setStartDate(value); DateAndTime(value, startTime)}}/>
+                                <input className="border border-gray-400 rounded-sm p-3 w-full text-sm" type="date" onChange={(e) => {const value = e.target.value; setStartDate(value); DateAndTimeS(value, startTime)}}/>
                             </div>
                             <div className="flex flex-col w-1/3">
                                 <label htmlFor="">Horário</label>
-                                <input className="border border-gray-400 rounded-sm p-3 w-full text-sm" type="time" onChange={(e) => {const value = e.target.value; setStartTime(value); DateAndTime(startDate, value)}}/>
+                                <input className="border border-gray-400 rounded-sm p-3 w-full text-sm" type="time" onChange={(e) => {const value = e.target.value; setStartTime(value); DateAndTimeS(startDate, value)}}/>
                             </div>
                         </div>
                         <div className="flex gap-3">
                             <div className="flex flex-col w-2/3">
                                 <label htmlFor="">Data de término</label>
-                                <input className="border border-gray-400 rounded-sm p-3 w-full text-sm" type="date"  />
+                                <input className="border border-gray-400 rounded-sm p-3 w-full text-sm" type="date"  onChange={(e) => {const value = e.target.value; setEndDate(value); DateAndTimeE(value, endTime)}}/>
                             </div>
                             <div className="flex flex-col w-1/3">
                                 <label htmlFor="">Horário</label>
-                                <input className="border border-gray-400 rounded-sm p-3 w-full text-sm" type="time" />
+                                <input className="border border-gray-400 rounded-sm p-3 w-full text-sm" type="time" onChange={(e) => {const value = e.target.value; setEndTime(value); DateAndTimeE(endDate, value)}}/>
                             </div>
                         </div>
                     </div>
@@ -131,12 +156,11 @@ export default function CreateTickets({ close }) {
                     <div className="flex justify-start w-full mt-5">
                         <div className="flex flex-col w-full">
                             <label htmlFor="">Adicione uma descrição ao seu ingresso (opcional)</label>
-                            <textarea className="border mt-2 border-gray-400 rounded-sm p-3 resize-none w-full" rows="4" placeholder="Insira a descrição do seu ingresso (opcional)" />
+                            <textarea className="border mt-2 border-gray-400 rounded-sm p-3 resize-none w-full" rows="4" placeholder="Insira a descrição do seu ingresso (opcional)" onChange={(e) => setTicket(prev => ({...prev, description: e.target.value})) }/>
                         </div>
                     </div>
 
                     <CreateButton ticket={Ticket} />
-
 
                 </div>
             </div>
