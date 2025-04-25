@@ -107,11 +107,11 @@ export default function CreateTickets({ close }) {
 
                     changeHalfTitle={(value) => setTicket(prev =>({...prev, halfTitle: value}))}
 
-                    changeHalfNetAmountToOrganizer={(value) => setTicket({halfNetAmountToOrganizer: value})}
+                    changeHalfNetAmountToOrganizer={(value) => setTicket(prev => ({...prev, halfNetAmountToOrganizer: value}))}
 
-                    changeHalfAmountToClient={(value) => setTicket({halfAmountToClient: value})}
+                    changeHalfAmountToClient={(value) => setTicket(prev => ({...prev, halfAmountToClient: value}))}
 
-                    changeQuantityHalfTicket={(value) => setTicket({quantityHalfTicket: value})}
+                    changeQuantityHalfTicket={(value) => setTicket(prev => ({...prev, quantityHalfTicket: value}))}
                     />
 
                     <div className="flex justify-start w-full mt-5">
