@@ -1,4 +1,4 @@
-import pool from "../lib/db";
+import pool from "@/app/lib/db";
 
 export async function POST(req) {
 
@@ -17,12 +17,9 @@ export async function POST(req) {
         return new Response('Usuário criado!', {status: 201});
 
 
-    }catch{
-        
+    } catch (error) {
         console.error('erro no insert', error);
-        return new Response('deu b.o!!!!!!', {status: 500})
-
-
-    }
+        return new Response('deu b.o!!!!!!', { status: 500 });
+      }
     
 }
