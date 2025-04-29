@@ -13,3 +13,55 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Client {
+  id              Int       @id @default(autoincrement())
+  client_name     String
+  email           String
+  client_password String
+  events          Events[]  // Lado inverso
+  ticket_purchase Ticket_purchase[]
+  @@map("client")
+}
+
+model Events {
+  id          Int     @id @default(autoincrement())
+  event_name  String
+  description String?
+  client_id   Int
+  client      Client  @relation(fields: [client_id], references: [id])
+  tickets     Tickets[]
+  photo       Bytes?
+  @@map("events")
+}
+
+model Tickets {
+  id                          Int      @id @default(autoincrement())
+  title                       String
+  quantity                    Int
+  organizer_net_amount        Int
+  price_for_client            Int
+  paid_or_free                Boolean
+  half_title                  String?
+  quantity_half_ticket        Int?
+  half_net_amount_to_organizer Int?
+  half_price_to_client        Int?
+  start_date                  DateTime
+  end_date                    DateTime
+  description                 String?
+  events_id                   Int
+  events                      Events   @relation(fields: [events_id], references: [id])
+  ticket_purchase             Ticket_purchase[]
+  @@map("tickets")
+}
+
+model Ticket_purchase {
+  id                          Int      @id @default(autoincrement())
+  client_id                   Int
+  client                      Client   @relation(fields: [client_id], references: [id])
+  tickets_id                  Int
+  tickets                     Tickets  @relation(fields: [tickets_id], references: [id])
+  stripe_checkout_session_id String
+  status_pagamento            String
+  criado_em                   DateTime @default(now())
+}
