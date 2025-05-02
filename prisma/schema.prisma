@@ -16,7 +16,7 @@ datasource db {
 model Client {
   id              Int       @id @default(autoincrement())
   client_name     String
-  email           String
+  email           String @unique
   client_password String
   events          Events[]  // Lado inverso
   ticket_purchase Ticket_purchase[]
