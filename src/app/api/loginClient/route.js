@@ -1,7 +1,6 @@
 import prisma from "@/app/lib/prisma";
 import { compareHashPassword } from "@/app/lib/hash";
 import { generateToken } from "@/app/lib/jwt";
-import { use } from "react";
 
 export async function POST(req) {
 
@@ -9,13 +8,13 @@ export async function POST(req) {
 
         const logInfo = await req.json()
 
-        const { emailUser, password } = logInfo;
+        const { client_email, password } = logInfo;
 
 
 
         const user = await prisma.client.findUnique({
 
-            where: { email: emailUser }
+            where: { email: client_email }
 
         })
 
