@@ -1,4 +1,5 @@
 import { authMiddleware } from "@/app/lib/authMiddleware";
+import { stripeCreateTicket } from "@/app/lib/stripeCreateProduct";
 import prisma from "@/app/lib/prisma";
 
 export async function POST(req) {
@@ -11,7 +12,7 @@ export async function POST(req) {
     const body = await req.json();
     const {eventName, descriptionEvent, ticketsEvent, photoEvent } = body;
 
-    await prisma.events.create({
+    const event = await prisma.events.create({
 
      data:{
 
@@ -26,7 +27,19 @@ export async function POST(req) {
 
     })
 
+    let ticketStripe;
+
+    for(let i = 0; i<ticketsEvent.length; i++){ 
+
+    const metadados = {eventId: event.id, eventName: event.event_name}
+    ticketStripe = await stripeCreateTicket(ticketsEvent[i], metadados)
+
+    if(!ticketStripe) return new Response('deu ruim aí', {status: 500});
+  
+  }
+    
     return new Response('Evento criado!', {status: 201} )
+    
 }catch(error){
 
     console.error("deu b.o ", error)

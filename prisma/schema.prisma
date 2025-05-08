@@ -39,7 +39,7 @@ model Tickets {
   title                       String
   quantity                    Int
   organizer_net_amount        Int
-  price_for_client            Int
+  price_for_client            String
   paid_or_free                Boolean
   half_title                  String?
   quantity_half_ticket        Int?
