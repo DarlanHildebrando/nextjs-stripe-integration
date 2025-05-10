@@ -76,7 +76,7 @@ Se tudo ocorreu bem até aqui, podemos seguir para a próxima etapa: configurar 
 
 Na raiz do projeto (onde estão localizados arquivos como `.gitignore`, `package.json` etc.), crie um arquivo chamado **.env**. A estrutura esperada é semelhante a:
 
-<img src="./imagesFromReadme/estrutura_desejada.png" alt="Imagem de uma estrutura de arquivos na raiz do projeto">
+<img src="./imagesFromReadme/estrutura_desejada.png" alt="Imagem de uma estrutura de arquivos na raíz do projeto">
 
 ---
 
@@ -96,7 +96,7 @@ Adicione ao seu arquivo `.env` as seguintes variáveis de ambiente:
 
 <br>
 
-<img src="./imagesFromReadme/Painel_teste_stripe.png" alt='Imagem de um painel teste da Stripe'/>
+<img src="./imagesFromReadme/Painel_teste_stripe.png" alt="Imagem de um painel teste da Stripe"/>
 
 A imagem acima mostra um exemplo do dashboard da Stripe, com a área das chaves **destacada em vermelho**.
 
