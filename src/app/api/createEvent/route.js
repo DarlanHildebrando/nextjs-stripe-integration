@@ -50,15 +50,3 @@ export async function POST(req) {
 }
 
 
-
-/** model Events {
-  id          Int     @id @default(autoincrement())
-  event_name  String
-  description String?
-  client_id   Int
-  client      Client  @relation(fields: [client_id], references: [id])
-  tickets     Tickets[]
-  photo       Bytes?
-  @@map("events")
-}
- */

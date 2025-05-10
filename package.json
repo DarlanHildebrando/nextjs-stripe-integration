@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "echo O Jubileu está esquisito hoje, eu tenho medo! 😨 && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
