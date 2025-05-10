@@ -185,3 +185,7 @@ npx prisma migrate deploy
 ```
 
 ✅ Após executar esses dois comandos, o Prisma estará totalmente funcional e pronto para ser utilizado no projeto!
+
+---
+
+>⚠️Documentação incompleta, ainda em desenvolvimento!
