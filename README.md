@@ -277,7 +277,7 @@ Substitua seu_token_aqui pelo token real recebido na resposta da rota de login o
 
 **Body:** raw + JSON.
 
-**Headers**: Content-Type: application/json. <!-- Esse header geralmente é adicionado automaticamente ao selecionar "raw" e "JSON" no corpo da requisição. -->
+**Headers**: Content-Type: application/json. (Esse header geralmente é adicionado automaticamente ao selecionar "raw" e "JSON" no corpo da requisição.)
 
 **Resposta desejada:** Mensagem "Cadastro realizado com sucesso!"  + Token.
 
