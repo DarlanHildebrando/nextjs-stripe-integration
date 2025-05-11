@@ -29,3 +29,17 @@ export function generateToken(payload) {
     }
 
 }
+
+export function decodeToken(token){
+
+    try {
+        
+        return jwt.decode(token, SECRET)
+
+    } catch (error) {
+        
+        return null;
+
+    }
+
+}

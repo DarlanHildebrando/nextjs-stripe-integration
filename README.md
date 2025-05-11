@@ -186,6 +186,101 @@ npx prisma migrate deploy
 
 ✅ Após executar esses dois comandos, o Prisma estará totalmente funcional e pronto para ser utilizado no projeto!
 
+> **Observação**: para visualizar suas tabelas do Prisma, junto com os dados e outras informações, execute o seguinte comando:
+
+```bash
+npx prisma studio
+```
+
 ---
+
+## 🎯 Fazendo requisições com API Client
+
+Após seguir o tutorial de como rodar o projeto na sua máquina, você já pode realizar suas primeiras requisições utilizando ferramentas como o Postman ou qualquer outro API Client de sua preferência. Para isso, basta iniciar o servidor com o comando:
+
+```bash
+npm run dev
+```
+
+```bash
+> stripe-integration@0.1.0 dev
+> echo O Jubileu está esquisito hoje, eu tenho medo! 😨 && next dev
+
+O Jubileu está esquisito hoje, eu tenho medo! 😨
+   ▲ Next.js 15.2.4
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.1.102:3000
+   - Environments: .env #Seu arquivo .env que agora está configurado🫡.
+
+ ✓ Starting...
+ ✓ Ready in 4.8s
+```
+Se o Jubileu está esquisito hoje, e alguém está com medo... então está tudo certo! Agora é só partir para as requisições!
+
+## Registro de cliente (cadastro)
+
+**Siga as instruções para a requisição:**
+
+1. Abra sua ferramenta API Client.
+
+2. Selecione o método POST e insira a URL da rota: http://localhost:3000/api/registerClient
+
+3. Vá até a aba **Body**.
+
+4. Marque a opção **raw**.
+
+5. Logo ao lado, clique no menu suspenso (onde geralmente está escrito Text) e selecione JSON.
+
+6. No campo de texto abaixo, insira o seguinte conteúdo:
+
+```json
+{
+
+"name": "seu nome",
+"client_email": "seuemail@gmail.com",
+"password": "suaSenha"
+
+}
+```
+
+> Altere os campos conforme desejado. <br>
+> Email é tratado como único no banco de dados, não vai funcionar se já tiver sido registrado!
+
+**A resposta esperada é algo como:**
+
+```json
+ {
+    "message": "Cadastro realizado com sucesso!",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiZW1haWwiOiJhQGdtYWlsLmNvbSIsImlhdCI6MTc0Njk3NDgxOH0.fwku3KMTAQh2cWQPjxRbICoflW3Xhhase3QBclDBNgM"
+}
+
+```
+
+**Observação:** O campo `token` representa um JWT (JSON Web Token) que identifica a sua sessão no sistema. Ele deve ser enviado nas próximas requisições autenticadas (por exemplo, para acessar dados protegidos).
+
+Para utilizar esse token no Postman (ou outra ferramenta de API), siga os passos:
+
+1. Acesse a aba Headers.
+
+2. Adicione um novo header com:
+
+```bash
+Authorization: Bearer seu_token_aqui
+```
+Substitua seu_token_aqui pelo token real recebido na resposta da rota de login ou cadastro.
+
+**Resumo:**
+
+**Método:** POST.
+
+**URL:** http://localhost:3000/api/registerClient
+
+**Body:** raw + JSON.
+
+**Headers**: Content-Type: application/json. <!-- Esse header geralmente é adicionado automaticamente ao selecionar "raw" e "JSON" no corpo da requisição. -->
+
+**Resposta desejada:** Mensagem "Cadastro realizado com sucesso!"  + Token.
+
+
 
 >⚠️Documentação incompleta, ainda em desenvolvimento!

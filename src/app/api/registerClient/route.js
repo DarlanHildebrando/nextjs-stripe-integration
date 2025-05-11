@@ -1,5 +1,7 @@
 import prisma from "@/app/lib/prisma";
 import { hashPassword } from "@/app/lib/hash";
+import { generateToken } from "@/app/lib/jwt";
+import { decodeToken } from "@/app/lib/jwt";
 
 export async function POST(req) {
 
@@ -10,7 +12,7 @@ export async function POST(req) {
 
         const password_hash = await hashPassword(password)
 
-        await prisma.client.create({
+        const user = await prisma.client.create({
             data:{
 
                 client_name: name,
@@ -20,7 +22,15 @@ export async function POST(req) {
             }            
         })
 
-        return new Response('Usuário criado!', {status: 201});
+        const token = generateToken({ id: user.id, email: user.email })
+
+        return new Response(JSON.stringify({ message: "Cadastro realizado com sucesso!", token}), {
+            status: 200,
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Baerer ${token}`
+            },
+        });
 
 
     } catch (error) {
