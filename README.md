@@ -96,7 +96,7 @@ Adicione ao seu arquivo `.env` as seguintes variáveis de ambiente:
 
 <br>
 
-<img src="./imagesFromReadme/Painel_teste_stripe.png" alt="Imagem de um painel teste da Stripe"/>
+<img src="./imagesFromReadme/painel_teste_stripe.png" alt="Imagem de um painel teste da Stripe"/>
 
 A imagem acima mostra um exemplo do dashboard da Stripe, com a área das chaves **destacada em vermelho**.
 
