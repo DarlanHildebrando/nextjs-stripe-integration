@@ -76,7 +76,8 @@ Se tudo ocorreu bem até aqui, podemos seguir para a próxima etapa: configurar 
 
 Na raiz do projeto (onde estão localizados arquivos como `.gitignore`, `package.json` etc.), crie um arquivo chamado **.env**. A estrutura esperada é semelhante a:
 
-<img src="./imagesFromReadme/estrutura_desejada.png" alt="Imagem de uma estrutura de arquivos na raíz do projeto">
+![Imagem de uma estrutura de arquivos na raíz do projeto](./imagesFromReadme/estrutura_desejada.png)
+
 
 ---
 
@@ -96,7 +97,7 @@ Adicione ao seu arquivo `.env` as seguintes variáveis de ambiente:
 
 <br>
 
-<img src="./imagesFromReadme/painel_stripe_key.png" alt="Imagem de um painel teste da Stripe">
+![Imagem de um painel teste da Stripe](./imagesFromReadme/painel_stripe_key.png)
 
 A imagem acima mostra um exemplo do dashboard da Stripe, com a área das chaves **destacada em vermelho**.
 
@@ -556,8 +557,7 @@ Evento criado!
 
 Acesse seu catálogo de produtos para vizualizar seus produtos (ingressos) criados através desta API [clicando aqui](https://dashboard.stripe.com/test/products)
 
-<img src="./imagesFromReadme/painel_product_stripe.png">
-
+![imagem de um painel stripe com produtos](./imagesFromReadme/painel_product_stripe.png)
 Acima um exemplo de um painel de produtos da stripe, com produtos criados através desse projeto **destacados em vermelho**
 
 ---
