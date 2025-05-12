@@ -96,7 +96,7 @@ Adicione ao seu arquivo `.env` as seguintes variáveis de ambiente:
 
 <br>
 
-<img src="./imagesFromReadme/painel_stripe_key.png" alt="Imagem de um painel teste da Stripe"/>
+<img src="./imagesFromReadme/painel_stripe_key.png" alt="Imagem de um painel teste da Stripe">
 
 A imagem acima mostra um exemplo do dashboard da Stripe, com a área das chaves **destacada em vermelho**.
 
@@ -556,7 +556,7 @@ Evento criado!
 
 Acesse seu catálogo de produtos para vizualizar seus produtos (ingressos) criados através desta API [clicando aqui](https://dashboard.stripe.com/test/products)
 
-<img src="./imagesFromReadme/painel_product_stripe.png"/>
+<img src="./imagesFromReadme/painel_product_stripe.png">
 
 Acima um exemplo de um painel de produtos da stripe, com produtos criados através desse projeto **destacados em vermelho**
 
