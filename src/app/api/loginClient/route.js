@@ -18,6 +18,8 @@ export async function POST(req) {
 
         })
 
+        if(!user) return new Response("Usuário não existe!", {status: 404})
+
         const password_compare = await compareHashPassword(password, user.client_password)
 
         if (!password_compare) return new Response("Senha inválida!", { status: 401 });

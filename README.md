@@ -265,6 +265,7 @@ Para utilizar esse token no Postman (ou outra ferramenta de API), siga os passos
 2. Adicione um novo header com:
 
 ```bash
+# Key          Value
 Authorization: Bearer seu_token_aqui
 ```
 Substitua seu_token_aqui pelo token real recebido na resposta da rota de login ou cadastro.
@@ -281,6 +282,284 @@ Substitua seu_token_aqui pelo token real recebido na resposta da rota de login o
 
 **Resposta desejada:** Mensagem "Cadastro realizado com sucesso!"  + Token.
 
+---
 
+## Login
+
+Após você ter registrado suas credenciais no sistema, aprenda a acessar sua conta:
+
+**Siga as instruções para a requisição:**
+
+1. Abra sua ferramenta API Client.
+
+2. Selecione o método POST e insira a URL da rota: http://localhost:3000/api/loginClient
+
+3. Vá até a aba **Body**.
+
+4. Marque a opção **raw**.
+
+5. Logo ao lado, clique no menu suspenso (onde geralmente está escrito Text) e selecione JSON.
+
+6. No campo de texto abaixo, insira o seguinte conteúdo:
+
+```json
+{
+
+"client_email": "seuemail@gmail.com",
+"password": "suaSenha"
+
+}
+```
+
+> Altere os campos conforme os dados da sua conta (email e senha).
+
+**A resposta esperada é algo como:**
+
+```json
+{
+    "message": "Login realizado com sucesso",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZW1haWwiOiJzZXVlbWxAZ21haWwuY29tIiwiaWF0IjoxNzQ3MDUyNTIwfQ.Hp1kIOWNRHx44THu6eORPn2BFJROGK3SIPxCC8MD3sg"
+}
+
+```
+
+**Observação:** O campo `token` representa um JWT (JSON Web Token) que identifica a sua sessão no sistema. Ele deve ser enviado nas próximas requisições autenticadas (por exemplo, para acessar dados protegidos).
+
+Para utilizar esse token no Postman (ou outra ferramenta de API), siga os passos:
+
+1. Acesse a aba Headers.
+
+2. Adicione um novo header com:
+
+```bash
+# Key          Value
+Authorization: Bearer seu_token_aqui
+```
+Substitua seu_token_aqui pelo token real recebido na resposta da rota de login ou cadastro.
+
+**Resumo:**
+
+**Método:** POST.
+
+**URL:** http://localhost:3000/api/loginClient
+
+**Body:** raw + JSON.
+
+**Headers**: Content-Type: application/json. (Esse header geralmente é adicionado automaticamente ao selecionar "raw" e "JSON" no corpo da requisição.)
+
+**Resposta desejada:** Mensagem "Login realizado com sucesso!"  + Token.
+
+---
+
+## Puxar informações de um usuário
+
+Para essa requisição é **obrigatório** que você tenha um token válido(obtido nas requisições anteriores, cadastro ou login).
+
+**Siga as instruções para a requisição:**
+
+1. Abra sua ferramenta API Client.
+
+2. Selecione o método GET e insira a URL da rota: http://localhost:3000/api/getClientById
+
+3. Acesse a aba Headers.
+
+4. Adicione um novo header com:
+
+```bash
+# Key          Value
+Authorization: Bearer seu_token_aqui
+```
+Substitua seu_token_aqui pelo token real recebido na resposta da rota de login ou cadastro.
+
+5. Dispare a requisição.
+
+**A resposta esperada é algo como:**
+
+```json
+{
+    "id": 9,
+    "client_name": "seu nome",
+    "email": "seuemail@gmail.com",
+    "client_password": "$2b$10$CzjTLqMoVjpc7Sh.UgtBEuWuOQXrIkQdnXVe3Tg1HJXDzPqBfyNAu"
+}
+```
+
+Observação: O campo client_password (sua senha) está armazenado de forma hasheada, utilizando o algoritmo BCRYPT. Isso é feito para proteger dados sensíveis, como senhas, seguindo boas práticas de segurança.
+
+**Resumo:**
+
+**Método:** GET.
+
+**URL:** http://localhost:3000/api/getClientById
+
+**Body:** raw + JSON.
+
+**Headers**: Authorization: Bearer seu_token
+
+**Resposta desejada:** Dados do usuário como: Id, nome, email e senha com hash.
+
+---
+
+## Deletar cliente
+
+Para essa requisição é **obrigatório** que você tenha um token válido(obtido nas requisições anteriores, cadastro ou login).
+
+**Siga as instruções para a requisição:**
+
+1. Abra sua ferramenta API Client.
+
+2. Selecione o método DELETE e insira a URL da rota: http://localhost:3000/api/deleteClient
+
+3. Acesse a aba Headers.
+
+4. Adicione um novo header com:
+
+```bash
+# Key          Value
+Authorization: Bearer seu_token_aqui
+```
+Substitua seu_token_aqui pelo token real recebido na resposta da rota de login ou cadastro.
+
+5. Dispare a requisição.
+
+**A resposta esperada é algo como:**
+
+```raw
+Usuário deletado!
+```
+
+**Resumo:**
+
+**Método:** DELETE.
+
+**URL:** http://localhost:3000/api/deleteClient
+
+**Body:** raw + JSON.
+
+**Headers**: Authorization: Bearer seu_token
+
+**Resposta desejada:** Mensagem: "Usuário deletado!".
+
+---
+
+## Criar evento
+
+Esta requisição realiza a integração com a Stripe API, permitindo a criação de produtos — que representam os ingressos dos eventos — diretamente na plataforma Stripe a partir deste projeto.
+
+Para essa requisição é **obrigatório** que você tenha um token válido(obtido nas requisições anteriores, cadastro ou login).
+
+**Siga as instruções para a requisição:**
+
+1. Abra sua ferramenta API Client.
+
+2. Selecione o método POST e insira a URL da rota: http://localhost:3000/api/createEvent
+
+3. Acesse a aba Headers.
+
+4. Adicione um novo header com:
+
+```bash
+# Key          Value
+Authorization: Bearer seu_token_aqui
+```
+Substitua seu_token_aqui pelo token real recebido na resposta da rota de login ou cadastro.
+
+5. Vá até a aba **Body**.
+
+6. Marque a opção **raw**.
+
+7. Logo ao lado, clique no menu suspenso (onde geralmente está escrito Text) e selecione JSON.
+
+8. No campo de texto abaixo, insira o seguinte conteúdo:
+
+```json
+{
+
+"eventName": "nome do seu evento",
+"descriptionEvent": "descrição do seu evento",
+"ticketsEvent": [{
+    "title": "título do seu ingresso",
+    "quantity": 100,
+    "organizer_net_amount": 5000,
+    "price_for_client": "100",
+    "paid_or_free": true,
+    "half_title": "",
+    "quantity_half_ticket": 50,
+    "half_net_amount_to_organizer": 2500,
+    "half_price_to_client": 3000,
+    "start_date": "2025-06-01T18:00:00.000Z",
+    "end_date": "2025-06-01T22:00:00.000Z",
+    "description": "descrição do ingresso"
+  }]
+
+}
+
+```
+
+Caso deseje criar 2 produtos (ingresso) ou mais relacionados ao seu evento, isso é possível, basta adicionar mais objetos ao vetor dentro de **ticketsEvent**, desta forma:
+
+```json
+{
+
+"eventName": "nome do seu evento",
+"descriptionEvent": "descrição do seu evento",
+"ticketsEvent": [{
+    "title": "ingresso 1",
+    "quantity": 100,
+    "organizer_net_amount": 5000,
+    "price_for_client": "100",
+    "paid_or_free": true,
+    "half_title": "",
+    "quantity_half_ticket": 50,
+    "half_net_amount_to_organizer": 2500,
+    "half_price_to_client": 3000,
+    "start_date": "2025-06-01T18:00:00.000Z",
+    "end_date": "2025-06-01T22:00:00.000Z",
+    "description": "descrição do ingresso"
+  },{
+    "title": "ingresso 2",
+    "quantity": 100,
+    "organizer_net_amount": 5000,
+    "price_for_client": "100",
+    "paid_or_free": true,
+    "half_title": "",
+    "quantity_half_ticket": 50,
+    "half_net_amount_to_organizer": 2500,
+    "half_price_to_client": 3000,
+    "start_date": "2025-06-01T18:00:00.000Z",
+    "end_date": "2025-06-01T22:00:00.000Z",
+    "description": "descrição do ingresso"
+  },{
+    "title": "ingresso 3",
+    "quantity": 100,
+    "organizer_net_amount": 5000,
+    "price_for_client": "100",
+    "paid_or_free": true,
+    "half_title": "",
+    "quantity_half_ticket": 50,
+    "half_net_amount_to_organizer": 2500,
+    "half_price_to_client": 3000,
+    "start_date": "2025-06-01T18:00:00.000Z",
+    "end_date": "2025-06-01T22:00:00.000Z",
+    "description": "descrição do ingresso"
+  }   ]
+
+}
+```
+> **Observação:** Os objetos de ingressos possuem informações ainda não utilizadas pois o projeto ainda está em desenvolvimento, porém é necessário que se mantenham no lugar para o funcionamento da requisição, price_for_client deve se manter no formato String, logo esses detalhes serão arrumados! 🫡.
+
+**A resposta esperada é algo como:**
+
+```raw
+Evento criado!
+```
+
+Acesse seu catálogo de produtos para vizualizar seus produtos (ingressos) criados através desta API [clicando aqui](https://dashboard.stripe.com/test/products)
+
+<img src="./imagesFromReadme/painel_product_stripe.png"/>
+
+Acima um exemplo de um painel de produtos da stripe, com produtos criados através desse projeto **destacados em vermelho**
+
+---
 
 >⚠️Documentação incompleta, ainda em desenvolvimento!

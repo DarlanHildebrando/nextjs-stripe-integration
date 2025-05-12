@@ -9,17 +9,19 @@ export async function DELETE(req) {
 
     if(authError) return authError;
 
-    await prisma.client.delete({
+    console.log(JSON.stringify(req.user))
+
+    const userDeleted = await prisma.client.delete({
 
         where:{id: req.user.id}
         
     })
 
-    if (!user) {
+    if (!userDeleted) {
         return new Response('Usuário não encontrado', { status: 404 });
       }
 
-    return new Response('Jubileu foi pro saco', {status: 204})
+    return new Response('Usuário deletado!', {status: 200})
 
 }catch(error){
 
