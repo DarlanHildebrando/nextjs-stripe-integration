@@ -117,7 +117,7 @@ No seu arquivo `.env`, coloque a seguinte URL substituindo os campos conforme su
 
 ```bash
 # Substitua os campos "seu_usuario", "sua_senha", "nome_do_seu_banco_de_dados" e, se necessário, a porta (padrão: 5432)
-
+                                                  
 DATABASE_URL="postgresql://seu_usuario:sua_senha@localhost:5432/nome_do_seu_banco_de_dados?schema=public"
 ```
 
