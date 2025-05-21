@@ -6,7 +6,6 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body
       >
-        <Sidebar/>
         {children}
       </body>
     </html>

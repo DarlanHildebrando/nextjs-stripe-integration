@@ -1,31 +1,13 @@
 'use client'
 
-import { useEffect, useState } from "react";
-import CreateTickets from "./components/formTickets/CreateTickets";
-
 export default function Home() {
 
-  const [FormActive, setActive] = useState(false)
-
-  useEffect(() => {
-
-    if(close === true){
-
-      setActive(false)
-
-    }
-
-  }, [CreateTickets])
-
-
   return (
-    <div className="flex justify-center items-center text-center h-screen">
+    <div className="flex flex-col justify-center h-screen items-center">
 
-      <button onClick={() => setActive(true)} className="bg-roxo-principal-600 text-white p-3 rounded-sm">Crie seu ingresso</button>
-      
-
-     {FormActive && <CreateTickets close={() => setActive(false)}/>}
-
+       <h1>HOMEPAGE</h1>
+       <h4>AINDA EM DESENVOLVIMENTO</h4>
+    
     </div>
   );
 }
