@@ -14,12 +14,12 @@ export async function POST(req) {
 
     const ticketStripe = await stripeCreateTicket(ticket)
 
-    if(!ticketStripe) return new Response('deu ruim aí', {status: 500});
+    if(!ticketStripe) return new Response('Ticket não fornecido', {status: 500});
 
     return new Response("deu boa", {status: 201})
 
     } catch (error) {
         console.error(error)
-        return new Response('deu b.o', {status: 500})
+        return new Response('Erro interno no servidor', {status: 500})
     }
 }

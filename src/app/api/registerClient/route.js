@@ -34,8 +34,8 @@ export async function POST(req) {
 
 
     } catch (error) {
-        console.error('erro no insert', error);
-        return new Response('deu b.o!!!!!!', { status: 500 });
+        console.error('Erro ao cadastrar cliente', error);
+        return new Response('Erro interno no servidor', { status: 500 });
       }
     
 }

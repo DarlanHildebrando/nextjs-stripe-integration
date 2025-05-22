@@ -34,7 +34,7 @@ export async function POST(req) {
     const metadados = {eventId: event.id, eventName: event.event_name}
     ticketStripe = await stripeCreateTicket(ticketsEvent[i], metadados)
 
-    if(!ticketStripe) return new Response('deu ruim aí', {status: 500});
+    if(!ticketStripe) return new Response('Ticket não fornecido', {status: 500});
   
   }
     
@@ -42,8 +42,8 @@ export async function POST(req) {
     
 }catch(error){
 
-    console.error("deu b.o ", error)
-    return new Response("fudeu", {status: 500})
+    console.error("Erro ao criar evento", error)
+    return new Response("Erro interno no servidor", {status: 500})
     
 }
     

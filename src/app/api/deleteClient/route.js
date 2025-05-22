@@ -25,8 +25,8 @@ export async function DELETE(req) {
 
 }catch(error){
 
-    console.error('deub.o', error)
-    return new Response("b.o ae paizao", {status: 500})
+    console.error('Erro ao tentar deletar cliente', error)
+    return new Response("Erro interno no servidor", {status: 500})
 
 }
     

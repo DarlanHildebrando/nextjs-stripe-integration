@@ -36,7 +36,7 @@ export async function POST(req) {
 
     } catch (error) {
 
-        console.error("Erro ao fazer login:", error);
+        console.error("Erro ao fazer login", error);
         return new Response("DEU B.OOOOOO", { status: 500 })
 
     }

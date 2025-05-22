@@ -46,7 +46,7 @@ export async function stripeCheckoutMid(req) {
 
         console.error(error)
 
-        return new Response("b.o do krai", {status: 500})
+        return new Response("Erro interno no servidor", {status: 500})
 
     }
 

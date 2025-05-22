@@ -24,9 +24,9 @@ export async function GET(req) {
     })
 }catch(error){
 
-    console.log('b.oooo', error)
+    console.log('Erro ao buscar dados do cliente', error)
  
-    return new Response("Erro no server paizao", {status: 500})
+    return new Response("Erro interno no servidor", {status: 500})
 
 }
 }
