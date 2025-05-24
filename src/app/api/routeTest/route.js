@@ -1,5 +1,6 @@
-import { stripeCreateTicket } from "@/app/lib/stripeCreateProduct";
 import { authMiddleware } from "@/app/lib/authMiddleware";
+import { stripeGetProduct } from "@/app/lib/stripeGetProduct";
+import prisma from "@/app/lib/prisma";
 
 export async function POST(req) {
 
@@ -10,11 +11,22 @@ export async function POST(req) {
 
     if(authError) return authError;
 
-    const ticket = await req.json();
+    const eventJson = await req.json();
 
-    const ticketStripe = await stripeCreateTicket(ticket)
+    const idInt = parseInt(eventJson.id, 10)
 
-    if(!ticketStripe) return new Response('Ticket não fornecido', {status: 500});
+    const event = await prisma.events.findUnique({
+
+        where: {id: idInt}
+
+    })
+
+    if(!event) return new Response("Evento não encontrado", {status: 404})
+
+
+    const product = stripeGetProduct(idInt);
+
+    console.log(product)
 
     return new Response("deu boa", {status: 201})
 
